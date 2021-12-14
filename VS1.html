@@ -1,0 +1,462 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8" />
+    <title>Gamedev Canvas Workshop</title>
+    <style>
+      * {
+        padding: 0;
+        margin: 0;
+        background-color: #696969;
+      }
+      canvas {
+        background: rgb(0, 0, 0);
+        display: inline-block;
+        margin: 0px;
+        width: 480px;
+        height: 640px;
+        margin-left: 500px;
+        border-radius: 10px;
+        padding-left: 0;
+        padding-right: 0;
+        margin-left: auto;
+        margin-right: auto;
+      }
+      h1 {
+        text-align: center;
+      }
+
+      #start {
+        display: inline-block;
+        background-color: #000000;
+        border-radius: 10px;
+        color: #696969;
+        text-align: center;
+        font-size: 28px;
+        padding: 15px;
+        width: 238px;
+        -webkit-transition: all 0.5s;
+        -moz-transition: all 0.5s;
+        -o-transition: all 0.5s;
+        transition: all 0.5s;
+        cursor: pointer;
+      }
+      #pause {
+        display: inline-block;
+        background-color: #000000;
+        border-radius: 10px;
+        color: #696969;
+        text-align: center;
+        font-size: 28px;
+        padding: 15px;
+        width: 238px;
+        -webkit-transition: all 0.5s;
+        -moz-transition: all 0.5s;
+        -o-transition: all 0.5s;
+        transition: all 0.5s;
+        cursor: pointer;
+      }
+    </style>
+  </head>
+  <body>
+    <canvas id="myCanvas" width="480px" height="640px"></canvas>
+
+    <script>
+      // JavaScript code goes here
+      let height = screen.height;
+      var canvas = document.getElementById("myCanvas");
+      var ctx = canvas.getContext("2d");
+      var dy = 2;
+      var rightPressed = false;
+      var leftPressed = false;
+      var vaisseauX = canvas.width / 2;
+      var vaisseauY = canvas.height;
+      var hauteurDeDépart = 300;
+      var score = 0;
+      var x = Math.random() * 48;
+      var y = Math.random() * hauteurDeDépart;
+      var rayon = Math.random() * 22 + 18;
+      var x1 = Math.random() * 96 + 48;
+      var y1 = Math.random() * hauteurDeDépart;
+      var rayon1 = Math.random() * 22 + 18;
+      var x2 = Math.random() * 144 + 96;
+      var y2 = Math.random() * hauteurDeDépart;
+      var rayon2 = Math.random() * 22 + 18;
+      var x3 = Math.random() * 192 + 144;
+      var y3 = Math.random() * hauteurDeDépart;
+      var rayon3 = Math.random() * 22 + 18;
+      var x4 = Math.random() * 240 + 192;
+      var y4 = Math.random() * hauteurDeDépart;
+      var rayon4 = Math.random() * 22 + 18;
+      var x5 = Math.random() * 296 + 240;
+      var y5 = Math.random() * hauteurDeDépart;
+      var rayon5 = Math.random() * 22 + 18;
+      var x6 = Math.random() * 344 + 299;
+      var y6 = Math.random() * hauteurDeDépart;
+      var rayon6 = Math.random() * 22 + 18;
+      var x7 = Math.random() * 392 + 344;
+      var y7 = Math.random() * hauteurDeDépart;
+      var rayon7 = Math.random() * 22 + 18;
+      var x8 = Math.random() * 440 + 392;
+      var y8 = Math.random() * hauteurDeDépart;
+      var rayon8 = Math.random() * 22 + 18;
+      var x9 = Math.random() * 480 + 440;
+      var y9 = Math.random() * hauteurDeDépart;
+      var rayon9 = Math.random() * 22 + 18;
+
+      function drawPlanete() {
+        ctx.beginPath();
+        ctx.arc(x, y, rayon, 0, Math.PI * 2);
+        ctx.fillStyle = "green";
+        ctx.fill();
+        ctx.closePath();
+      }
+
+      function drawPlanete1() {
+        ctx.beginPath();
+        ctx.arc(x1, y1, rayon1, 0, Math.PI * 2);
+        ctx.fillStyle = "#0095DD";
+        ctx.fill();
+        ctx.closePath();
+      }
+
+      function drawPlanete2() {
+        ctx.beginPath();
+        ctx.arc(x2, y2, rayon2, 0, Math.PI * 2);
+        ctx.fillStyle = "blue";
+        ctx.fill();
+        ctx.closePath();
+      }
+
+      function drawPlanete3() {
+        ctx.beginPath();
+        ctx.arc(x3, y3, rayon3, 0, Math.PI * 2);
+        ctx.fillStyle = "red";
+        ctx.fill();
+        ctx.closePath();
+      }
+
+      function drawPlanete4() {
+        ctx.beginPath();
+        ctx.arc(x4, y4, rayon4, 0, Math.PI * 2);
+        ctx.fillStyle = "white";
+        ctx.fill();
+        ctx.closePath();
+      }
+
+      function drawPlanete5() {
+        ctx.beginPath();
+        ctx.arc(x5, y5, rayon5, 0, Math.PI * 2);
+        ctx.fillStyle = "yellow";
+        ctx.fill();
+        ctx.closePath();
+      }
+
+      function drawPlanete6() {
+        ctx.beginPath();
+        ctx.arc(x6, y6, rayon6, 0, Math.PI * 2);
+        ctx.fillStyle = "#0095DD";
+        ctx.fill();
+        ctx.closePath();
+      }
+
+      function drawPlanete7() {
+        ctx.beginPath();
+        ctx.arc(x7, y7, rayon7, 0, Math.PI * 2);
+        ctx.fillStyle = "pink";
+        ctx.fill();
+        ctx.closePath();
+      }
+
+      function drawPlanete8() {
+        ctx.beginPath();
+        ctx.arc(x8, y8, rayon8, 0, Math.PI * 2);
+        ctx.fillStyle = "orange";
+        ctx.fill();
+        ctx.closePath();
+      }
+
+      function drawPlanete9() {
+        ctx.beginPath();
+        ctx.arc(x9, y9, rayon9, 0, Math.PI * 2);
+        ctx.fillStyle = "purple";
+        ctx.fill();
+        ctx.closePath();
+      }
+
+      function gameOver() {
+        ctx.font = "16px Arial bold";
+        ctx.fillStyle = "grey";
+        ctx.fillText("t", canvas.width - 75, 20);
+        document.location.reload();
+      }
+
+      function drawVaisseau() {
+        if (vaisseauY > 360) {
+          vaisseauY -= 3;
+          ctx.beginPath();
+          ctx.rect(vaisseauX, vaisseauY, 10, 30);
+          ctx.fillStyle = "red";
+          ctx.fill();
+          ctx.closePath();
+        } else {
+          ctx.beginPath();
+          ctx.rect(vaisseauX, vaisseauY, 10, 30);
+          ctx.fillStyle = "#0095DD";
+          ctx.fill();
+          ctx.closePath();
+        }
+      }
+
+      function hitbox() {
+        if (
+          Math.sqrt(
+            (x - vaisseauX) * (x - vaisseauX) +
+              (y - vaisseauY) * (y - vaisseauY)
+          ) < rayon
+        ) {
+          gameOver();
+        } else {
+          y += dy;
+        }
+        if (
+          Math.sqrt(
+            (x1 - vaisseauX) * (x1 - vaisseauX) +
+              (y1 - vaisseauY) * (y1 - vaisseauY)
+          ) < rayon1
+        ) {
+          gameOver();
+        } else {
+          y1 += dy;
+        }
+
+        if (
+          Math.sqrt(
+            (x2 - vaisseauX) * (x2 - vaisseauX) +
+              (y2 - vaisseauY) * (y2 - vaisseauY)
+          ) < rayon2
+        ) {
+          gameOver();
+        } else {
+          y2 += dy;
+        }
+        if (
+          Math.sqrt(
+            (x3 - vaisseauX) * (x3 - vaisseauX) +
+              (y3 - vaisseauY) * (y3 - vaisseauY)
+          ) < rayon3
+        ) {
+          gameOver();
+        } else {
+          y3 += dy;
+        }
+        if (
+          Math.sqrt(
+            (x4 - vaisseauX) * (x4 - vaisseauX) +
+              (y4 - vaisseauY) * (y4 - vaisseauY)
+          ) < rayon4
+        ) {
+          gameOver();
+        } else {
+          y4 += dy;
+        }
+        if (
+          Math.sqrt(
+            (x5 - vaisseauX) * (x5 - vaisseauX) +
+              (y5 - vaisseauY) * (y5 - vaisseauY)
+          ) < rayon5
+        ) {
+          gameOver();
+        } else {
+          y5 += dy;
+        }
+        if (
+          Math.sqrt(
+            (x6 - vaisseauX) * (x6 - vaisseauX) +
+              (y6 - vaisseauY) * (y6 - vaisseauY)
+          ) < rayon6
+        ) {
+          gameOver();
+        } else {
+          y6 += dy;
+        }
+        if (
+          Math.sqrt(
+            (x7 - vaisseauX) * (x7 - vaisseauX) +
+              (y7 - vaisseauY) * (y7 - vaisseauY)
+          ) < rayon7
+        ) {
+          gameOver();
+        } else {
+          y7 += dy;
+        }
+        if (
+          Math.sqrt(
+            (x8 - vaisseauX) * (x8 - vaisseauX) +
+              (y8 - vaisseauY) * (y8 - vaisseauY)
+          ) < rayon8
+        ) {
+          gameOver();
+        } else {
+          y8 += dy;
+        }
+        if (
+          Math.sqrt(
+            (x9 - vaisseauX) * (x9 - vaisseauX) +
+              (y9 - vaisseauY) * (y9 - vaisseauY)
+          ) < rayon9
+        ) {
+          gameOver();
+        } else {
+          y9 += dy;
+        }
+      }
+
+      function deRetour() {
+        if (y > canvas.height) {
+          y -= canvas.height;
+          x = Math.random() * 480;
+          rayon = math.random() * 25 + 15;
+        }
+
+        if (y1 > canvas.height) {
+          y1 -= canvas.height;
+          x1 = Math.random() * 480;
+          rayon1 = math.random() * 25 + 15;
+        }
+
+        if (y2 > canvas.height) {
+          y2 -= canvas.height;
+          x2 = Math.random() * 480;
+          rayon2 = math.random() * 25 + 15;
+        }
+
+        if (y3 > canvas.height) {
+          y3 -= canvas.height;
+          x3 = Math.random() * 480;
+          rayon3 = math.random() * 25 + 15;
+        }
+
+        if (y4 > canvas.height) {
+          y4 -= canvas.height;
+          x4 = Math.random() * 480;
+          rayon4 = math.random() * 25 + 15;
+        }
+
+        if (y5 > canvas.height) {
+          y5 -= canvas.height;
+          x5 = Math.random() * 480;
+          rayon5 = math.random() * 25 + 15;
+        }
+
+        if (y6 > canvas.height) {
+          y6 -= canvas.height;
+          x6 = Math.random() * 480;
+          rayon6 = math.random() * 25 + 15;
+        }
+
+        if (y7 > canvas.height) {
+          y7 -= canvas.height;
+          x7 = Math.random() * 480;
+          rayon7 = math.random() * 25 + 15;
+        }
+
+        if (y8 > canvas.height) {
+          y8 -= canvas.height;
+          x8 = Math.random() * 480;
+          rayon8 = math.random() * 25 + 15;
+        }
+
+        if (y9 > canvas.height) {
+          y9 -= canvas.height;
+          x9 = Math.random() * 480;
+          rayon9 = math.random() * 25 + 15;
+        }
+      }
+
+      function drawScore() {
+        ctx.font = "16px Arial bold";
+        ctx.fillStyle = "grey";
+        ctx.fillText("Score : " + score, canvas.width - 75, 20);
+      }
+
+      function drawVit() {
+        ctx.font = "16px Arial bold";
+        ctx.fillStyle = "grey";
+        ctx.fillText("S P E E D : " + dy, canvas.width - 420, 20);
+      }
+
+      function draw() {
+        ctx.clearRect(0, 0, canvas.width, canvas.height);
+        drawScore();
+        drawVit();
+        drawVaisseau();
+        drawPlanete();
+        drawPlanete1();
+        drawPlanete2();
+        drawPlanete3();
+        drawPlanete4();
+        drawPlanete5();
+        drawPlanete6();
+        drawPlanete7();
+        drawPlanete8();
+        drawPlanete9();
+        deRetour();
+        if (rightPressed) {
+          vaisseauX += 3;
+          if (vaisseauX + 30 > canvas.width) {
+            vaisseauX = canvas.width - 30;
+          }
+        } else if (leftPressed) {
+          vaisseauX -= 3;
+          if (vaisseauX < 0) {
+            vaisseauX = 0;
+          }
+        }
+        hitbox();
+        y += dy;
+        y1 += dy;
+        y2 += dy;
+        y3 += dy;
+        y4 += dy;
+        y5 += dy;
+        y6 += dy;
+        y7 += dy;
+        y8 += dy;
+        y9 += dy;
+        score += 1;
+        dy += 0.0005;
+      }
+
+      document.addEventListener("keydown", keyDownHandler, false);
+      document.addEventListener("keyup", keyUpHandler, false);
+
+      function keyDownHandler(e) {
+        if (e.key == "Right" || e.key == "ArrowRight") {
+          rightPressed = true;
+        } else if (e.key == "Left" || e.key == "ArrowLeft") {
+          leftPressed = true;
+        }
+      }
+
+      function keyUpHandler(e) {
+        if (e.key == "Right" || e.key == "ArrowRight") {
+          rightPressed = false;
+        } else if (e.key == "Left" || e.key == "ArrowLeft") {
+          leftPressed = false;
+        }
+      }
+
+      function start() {
+        var interval = setInterval(draw, 10);
+      }
+
+      function stop() {
+        clearInterval(interval);
+      }
+    </script>
+
+    <input id="start" type="button" value="START" onclick="start();" />
+    <input id="pause" type="button" value="PAUSE" onclick="stop();" />
+  </body>
+</html>
